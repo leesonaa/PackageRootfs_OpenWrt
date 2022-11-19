@@ -77,7 +77,7 @@ jobs:
       run: |
            cd openwrt
            git clone  https://github.com/esirplayground/luci-app-poweroff.git
-           ls -al
+           cd /package/feeds/luci && ls -al
            mv luci-app-poweroff package/feeds/luci/luci-app-poweroff
 
     - name: Install feeds
