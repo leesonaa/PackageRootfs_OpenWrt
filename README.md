@@ -16,11 +16,10 @@
 >
 >源码仓库：[Lean's LEDE](https://github.com/coolsnowwolf/lede)  
 
->默认后台：default IP is 192.168.2.1 and default password is "password".  
+>默认后台：default IP is 192.168.100.1 and default password is "password".  
 
+>感谢wjz304大佬手把手的指导.
 
-## Preview
-![Image text](screenshot/2022.06.22-1941.jpeg)  
 
 
 ## Credits
@@ -28,3 +27,4 @@
 - [Lean's LEDE](https://github.com/coolsnowwolf/lede)
 - [P3TERX's Actions](https://github.com/P3TERX/Actions-OpenWrt)
 - [SuLingGG's Actions](https://github.com/SuLingGG/OpenWrt-Rpi)
+- [esir] ([https://](https://github.com/esirplayground)
