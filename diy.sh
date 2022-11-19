@@ -83,7 +83,7 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' packag
 
 
 # Modify rootfs size
-sed -i 's/CONFIG_TARGET_ROOTFS_PARTSIZE=.*$/CONFIG_TARGET_ROOTFS_PARTSIZE=256/' .config
+#sed -i 's/CONFIG_TARGET_ROOTFS_PARTSIZE=.*$/CONFIG_TARGET_ROOTFS_PARTSIZE=256/' .config
 
 
 # Modify app list
