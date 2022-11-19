@@ -64,7 +64,8 @@ jobs:
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-
+        chmod a+w openwrt
+        
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && cp $FEEDS_CONF openwrt/feeds.conf.default
@@ -76,6 +77,7 @@ jobs:
       run: |
            cd openwrt
            git clone  https://github.com/esirplayground/luci-app-poweroff.git
+           ls -al
            mv luci-app-poweroff package/feeds/luci/luci-app-poweroff
 
     - name: Install feeds
