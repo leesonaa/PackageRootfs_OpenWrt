@@ -27,4 +27,4 @@
 - [Lean's LEDE](https://github.com/coolsnowwolf/lede)
 - [P3TERX's Actions](https://github.com/P3TERX/Actions-OpenWrt)
 - [SuLingGG's Actions](https://github.com/SuLingGG/OpenWrt-Rpi)
-- [esir] ([https://](https://github.com/esirplayground)
+- [esir](https://github.com/esirplayground)
