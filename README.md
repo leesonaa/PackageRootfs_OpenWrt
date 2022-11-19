@@ -19,8 +19,8 @@
 >默认后台：default IP is 192.168.2.1 and default password is "password".  
 
 
-# Preview
-#![Image text](screenshot/2022.06.22-1941.jpeg)  
+## Preview
+![Image text](screenshot/2022.06.22-1941.jpeg)  
 
 
 ## Credits
