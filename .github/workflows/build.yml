@@ -71,9 +71,15 @@ jobs:
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
+      
+    - name: Clone poweroff
+      run: |
+           cd openwrt
+           git clone  https://github.com/esirplayground/luci-app-poweroff.git
+           mv luci-app-poweroff package/feeds/luci/luci-app-poweroff
 
     - name: Install feeds
-      run: cd openwrt && git clone https://github.com/esirplayground/luci-app-poweroff && mv luci-app-poweroff /package/feeds/luci/luci-app-poweroff && ./scripts/feeds install -a
+      run: cd openwrt && ./scripts/feeds install -a
       
 
 
