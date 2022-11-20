@@ -88,6 +88,7 @@ jobs:
 
     - name: Load custom configuration
       run: |
+        cp rockchip-opc-h68k-d.dtb openwrt/rockchip-opc-h68k-d.dtb
         [ -e $CONFIG_FILE ] && cp $CONFIG_FILE openwrt/.config
         chmod +x $DIY_SHELL
         cd openwrt
