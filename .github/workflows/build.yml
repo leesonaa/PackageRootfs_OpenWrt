@@ -64,7 +64,7 @@ jobs:
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        chmod a+w openwrt
+        cd openwrt && git reset --hard 87f72815e8df96889c14565d4631235d72f8e30b && cd ..
         
     - name: Load custom feeds
       run: |
@@ -88,7 +88,6 @@ jobs:
 
     - name: Load custom configuration
       run: |
-        cp rockchip-opc-h68k-d.dtb openwrt/rockchip-opc-h68k-d.dtb
         [ -e $CONFIG_FILE ] && cp $CONFIG_FILE openwrt/.config
         chmod +x $DIY_SHELL
         cd openwrt
