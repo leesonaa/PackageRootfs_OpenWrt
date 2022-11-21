@@ -86,7 +86,7 @@ jobs:
            mv luci-app-poweroff package/feeds/luci/luci-app-poweroff      
 
 
-    - name: Clone poweroff
+    - name: del dts
       run: |
            rm -f /openwrt/target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/rk3568-opc-h68k.dts
            cp ./rk3568-opc-h68k.dts /openwrt/target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/rk3568-opc-h68k.dts
