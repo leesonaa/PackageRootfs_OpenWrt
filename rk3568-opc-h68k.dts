@@ -2734,7 +2734,7 @@
         compatible = "rockchip,rk3568-pcie", "snps,dw-pcie";
         #address-cells = <0x3>;
         #size-cells = <0x2>;
-        bus-range = <0x10 0x1F>;
+        bus-range = <0x0 0xF>;
         clocks = <0x1F 0x88 0x1F 0x89 0x1F 0x8A 0x1F 0x8B 0x1F 0x8C>;
         clock-names = "aclk_mst", "aclk_slv", "aclk_dbi", "pclk", "aux";
         device_type = "pci";
@@ -2786,7 +2786,7 @@
         compatible = "rockchip,rk3568-pcie", "snps,dw-pcie";
         #address-cells = <0x3>;
         #size-cells = <0x2>;
-        bus-range = <0x20 0x2F>;
+        bus-range = <0x0 0xF>;
         clocks = <0x1F 0x8F 0x1F 0x90 0x1F 0x91 0x1F 0x92 0x1F 0x93>;
         clock-names = "aclk_mst", "aclk_slv", "aclk_dbi", "pclk", "aux";
         device_type = "pci";
