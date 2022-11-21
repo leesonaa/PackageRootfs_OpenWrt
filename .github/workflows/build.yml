@@ -88,8 +88,10 @@ jobs:
 
     - name: del dts
       run: |
-           rm -f /openwrt/target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/rk3568-opc-h68k.dts
-           mv ./rk3568-opc-h68k.dts /openwrt/target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/rk3568-opc-h68k.dts
+           cd openwrt/target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/
+           rm -f ./rk3568-opc-h68k.dts
+           wget https://github.com/leesonaa/OpenWrt_Build/blob/main/rk3568-opc-h68k.dts
+           
 
     - name: Load custom configuration
       run: |
