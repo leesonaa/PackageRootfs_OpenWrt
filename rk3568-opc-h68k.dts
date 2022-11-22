@@ -1,4 +1,14 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+// Copyright (c) 2022 AmadeusGhost <amadeus@jmu.edu.cn>
+
 /dts-v1/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+#include <dt-bindings/pinctrl/rockchip.h>
+#include <dt-bindings/soc/rockchip,vop2.h>
+#include "rk3568.dtsi"
+
 // version: 17
 // last_comp_version: 16
 // boot_cpuid_phys: 0x0
@@ -2734,7 +2744,7 @@
         compatible = "rockchip,rk3568-pcie", "snps,dw-pcie";
         #address-cells = <0x3>;
         #size-cells = <0x2>;
-        bus-range = <0x0 0xF>;
+        bus-range = <0x10 0x1F>;
         clocks = <0x1F 0x88 0x1F 0x89 0x1F 0x8A 0x1F 0x8B 0x1F 0x8C>;
         clock-names = "aclk_mst", "aclk_slv", "aclk_dbi", "pclk", "aux";
         device_type = "pci";
@@ -2786,7 +2796,7 @@
         compatible = "rockchip,rk3568-pcie", "snps,dw-pcie";
         #address-cells = <0x3>;
         #size-cells = <0x2>;
-        bus-range = <0x0 0xF>;
+        bus-range = <0x20 0x2F>;
         clocks = <0x1F 0x8F 0x1F 0x90 0x1F 0x91 0x1F 0x92 0x1F 0x93>;
         clock-names = "aclk_mst", "aclk_slv", "aclk_dbi", "pclk", "aux";
         device_type = "pci";
