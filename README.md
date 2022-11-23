@@ -12,17 +12,17 @@
 <img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat" alt="license"/>
 </a>
 
-## Note
+## 说明
 >
 >源码仓库：[Lean's LEDE](https://github.com/coolsnowwolf/lede)  
 
 >默认后台：default IP is 192.168.100.1 and default password is "password".  
 
->感谢wjz304大佬手把手的指导.
+>感谢@wjz304大佬手把手的指导.
 
 
 
-## Credits
+## 鸣谢
 - [OpenWrt](https://github.com/openwrt/openwrt)
 - [Lean's LEDE](https://github.com/coolsnowwolf/lede)
 - [P3TERX's Actions](https://github.com/P3TERX/Actions-OpenWrt)
