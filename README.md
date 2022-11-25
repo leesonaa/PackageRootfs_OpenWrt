@@ -5,7 +5,7 @@
 
 <!-- version -->
 <a href="https://github.com/leesonaa/OpenWrt_Build/releases">
-<img src="https://img.shields.io/github/release-pre/wjz304/OpenWrt_Build.svg?style=flat" alt="latest version"/>
+<img src="https://img.shields.io/github/release-pre/leesonaa/OpenWrt_Build.svg?style=flat" alt="latest version"/>
 </a>
 <!-- license -->
 <a href="https://github.com/leesonaa/OpenWrt_Build">
