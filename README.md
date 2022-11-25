@@ -1,14 +1,14 @@
 # OpenWrt_Build
 
 ## 介绍  
-[OpenWrt_Build](https://github.com/wjz304/OpenWrt_Build)
+[OpenWrt_Build](https://github.com/leesonaa/OpenWrt_Build)
 
 <!-- version -->
-<a href="https://github.com/wjz304/OpenWrt_Build/releases">
+<a href="https://github.com/leesonaa/OpenWrt_Build/releases">
 <img src="https://img.shields.io/github/release-pre/wjz304/OpenWrt_Build.svg?style=flat" alt="latest version"/>
 </a>
 <!-- license -->
-<a href="https://github.com/wjz304/OpenWrt_Build">
+<a href="https://github.com/leesonaa/OpenWrt_Build">
 <img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat" alt="license"/>
 </a>
 
