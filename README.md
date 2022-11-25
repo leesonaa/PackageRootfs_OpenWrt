@@ -12,6 +12,10 @@
 <img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat" alt="license"/>
 </a>
 
+[![Build OpenWrt](https://github.com/leesonaa/OpenWrt_Build/actions/workflows/build.yml/badge.svg)](https://github.com/leesonaa/OpenWrt_Build/actions/workflows/build.yml)
+
+
+
 ## 说明
 >
 >源码仓库：[Lean's LEDE](https://github.com/coolsnowwolf/lede)  
