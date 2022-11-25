@@ -1,7 +1,7 @@
 # OpenWrt_Build
 
 ## 介绍  
-[H68k_OpenWrt_Build](https://github.com/leesonaa/OpenWrt_Build)
+[OpenWrt_H68K_NOWIFI_Build](https://github.com/leesonaa/OpenWrt_Build)
 
 <!-- version -->
 <a href="https://github.com/leesonaa/OpenWrt_Build/releases">
@@ -17,7 +17,8 @@
 
 
 ## 说明
->NO WIFI
+>放弃wifi，等待大雕修复
+>
 >源码仓库：[Lean's LEDE](https://github.com/coolsnowwolf/lede)  
 
 >默认后台：default IP is 192.168.100.1 and default password is "password".  
