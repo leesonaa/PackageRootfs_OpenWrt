@@ -30,7 +30,7 @@ env:
 jobs:
   build:
     name: Build OpenWrt Test
-    runs-on: Debian 11 “Bullseye”
+    runs-on: ubuntu-20.04-16core
     timeout-minutes: 600
     steps:
     - name: Checkout
