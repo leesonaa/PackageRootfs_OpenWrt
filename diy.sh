@@ -57,7 +57,7 @@ sed -i "s/OpenWrt /Ing build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/
 
 
 # Modify default theme
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' feeds/luci/collections/luci/Makefile
 sed -i 's/bootstrap/argon/g' feeds/luci/modules/luci-base/root/etc/config/luci
 
 
