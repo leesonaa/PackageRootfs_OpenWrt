@@ -1,7 +1,7 @@
 # OpenWrt_Build
 
 ## 介绍  
-[OpenWrt_H68K_NO-WIFI_Build](https://github.com/leesonaa/OpenWrt_Build)
+[OpenWrt_H68K_Build-no wifi](https://github.com/leesonaa/OpenWrt_Build)
 
 <!-- version -->
 <a href="https://github.com/leesonaa/OpenWrt_Build/releases">
