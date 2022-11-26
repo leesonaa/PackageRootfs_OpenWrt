@@ -29,8 +29,8 @@ env:
 
 jobs:
   build:
-    name: Build OpenWrt Test
-    runs-on: ubuntu-latest
+    name: ubuntu-runners
+    runs-on: ubuntu-20.04-16core
     timeout-minutes: 600
     steps:
     - name: Checkout
