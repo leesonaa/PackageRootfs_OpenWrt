@@ -33,3 +33,4 @@
 - [P3TERX's Actions](https://github.com/P3TERX/Actions-OpenWrt)
 - [SuLingGG's Actions](https://github.com/SuLingGG/OpenWrt-Rpi)
 - [esir](https://github.com/esirplayground)
+- [Ing](https://github.com/wjz304/OpenWrt_Build)
