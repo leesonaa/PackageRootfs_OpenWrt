@@ -29,8 +29,8 @@ env:
 
 jobs:
   build:
-    name: Build OpenWrt
-    runs-on: ubuntu-latest
+    name: Build OpenWrt Test
+    runs-on: bebian latest
     timeout-minutes: 600
     steps:
     - name: Checkout
