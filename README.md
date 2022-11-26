@@ -3,7 +3,7 @@
 ## 介绍  
 [OpenWrt_H68K_Build-no wifi](https://github.com/leesonaa/OpenWrt_Build)
 
-项目FORK自Ing大佬仓库<a href="https://github.com/wjz304/OpenWrt_Build">
+项目FORK自Ing大佬仓库 [<a href="https://github.com/wjz304/OpenWrt_Build">] 
 
 <!-- version -->
 <a href="https://github.com/leesonaa/OpenWrt_Build/releases">
