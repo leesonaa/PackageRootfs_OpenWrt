@@ -20,14 +20,13 @@
 
 ## 说明
 >放弃wifi，等待大雕修复
->
 >源码仓库：[Lean's LEDE](https://github.com/coolsnowwolf/lede)  
 
 >默认后台：default IP is 192.168.100.1 and default password is "password".  
 
 >感谢@wjz304大佬手把手的指导.
 
-目前稳定版本2022-1130-0752
+>目前稳定版本2022-1130-0752
 
 ## 鸣谢
 - [OpenWrt](https://github.com/openwrt/openwrt)
