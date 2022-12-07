@@ -68,9 +68,9 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         [ -e 040-del-rss-log.patch ] && cp 040-del-rss-log.patch openwrt/package/lean/r8125/patches/040-del-rss-log.patch
 
-	# ×¢ÊÍËùÓÐ
+        # æ³¨é‡Šæ‰€æœ‰ 
         sed -i 's/^TARGET_DEVICES += .*/#&/' openwrt/target/linux/rockchip/image/armv8.mk
-	# ´ò¿ª hinlink_opc-h68k
+        # æ‰“å¼€ hinlink_opc-h68k 
         sed -i 's/^#TARGET_DEVICES += hinlink_opc-h68k/TARGET_DEVICES += hinlink_opc-h68k/' openwrt/target/linux/rockchip/image/armv8.mk
 
     - name: Load custom feeds
