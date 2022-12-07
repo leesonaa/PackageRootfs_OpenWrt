@@ -11,7 +11,7 @@
 #
 
 
-name: Build OpenWrt
+name: Test Build
 
 on:
   schedule:
@@ -23,7 +23,7 @@ on:
 env:
   REPO_URL: https://github.com/DHDAXCW/lede-rockchip.git
   REPO_BRANCH: stable
-  FEEDS_CONF: feeds.conf.default
+  FEEDS_CONF: testfeeds.conf.default
   CONFIG_FILE: test.config
   DIY_SHELL: diy.sh
   TZ: Asia/Shanghai
