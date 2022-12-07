@@ -14,8 +14,8 @@
 name: Test Build
 
 on:
-  schedule:
-    - cron: '0 0 1/2 * *'
+#  schedule:
+   # - cron: '0 0 1/2 * *'
   repository_dispatch:
   workflow_dispatch:
 
