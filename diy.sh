@@ -25,7 +25,7 @@
 
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.100.1/g' package/base-files/files/bin/config_generate
 
 
 # Modify password to Null
@@ -45,7 +45,7 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 
 
 # Modify the version number
-sed -i "s/OpenWrt /Ing build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
+sed -i "s/OpenWrt /OpenWrt build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
 
 
 # Modify network setting
@@ -57,8 +57,8 @@ sed -i "s/OpenWrt /Ing build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/
 
 
 # Modify default theme
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
-sed -i 's/bootstrap/argon/g' feeds/luci/modules/luci-base/root/etc/config/luci
+sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' feeds/luci/collections/luci/Makefile
+sed -i 's/bootstrap/argonne/g' feeds/luci/modules/luci-base/root/etc/config/luci
 
 
 # Modify maximum connections
@@ -73,8 +73,8 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' packag
 
 # Add kernel build user
 [ -z $(grep "CONFIG_KERNEL_BUILD_USER=" .config) ] &&
-    echo 'CONFIG_KERNEL_BUILD_USER="Ing"' >>.config ||
-    sed -i 's@\(CONFIG_KERNEL_BUILD_USER=\).*@\1$"Ing"@' .config
+    echo 'CONFIG_KERNEL_BUILD_USER="OpenWrt"' >>.config ||
+    sed -i 's@\(CONFIG_KERNEL_BUILD_USER=\).*@\1$"OpenWrt"@' .config
 
 # Add kernel build domain
 [ -z $(grep "CONFIG_KERNEL_BUILD_DOMAIN=" .config) ] &&
@@ -83,8 +83,8 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' packag
 
 
 # Modify kernel and rootfs size
-sed -i 's/CONFIG_TARGET_KERNEL_PARTSIZE=.*$/CONFIG_TARGET_KERNEL_PARTSIZE=64/' .config
-sed -i 's/CONFIG_TARGET_ROOTFS_PARTSIZE=.*$/CONFIG_TARGET_ROOTFS_PARTSIZE=2048/' .config
+#sed -i 's/CONFIG_TARGET_KERNEL_PARTSIZE=.*$/CONFIG_TARGET_KERNEL_PARTSIZE=64/' .config
+#sed -i 's/CONFIG_TARGET_ROOTFS_PARTSIZE=.*$/CONFIG_TARGET_ROOTFS_PARTSIZE=256/' .config
 
 # Modify Default PPPOE Setting
 #sed -i '$i uci set network.wan.username=PPPOE_USERNAME' openwrt/package/*/*/my-default-settings/files/etc/uci-defaults/95-default-settings
@@ -92,26 +92,26 @@ sed -i 's/CONFIG_TARGET_ROOTFS_PARTSIZE=.*$/CONFIG_TARGET_ROOTFS_PARTSIZE=2048/'
 #sed -i '$i uci commit network' openwrt/package/*/*/my-default-settings/files/etc/uci-defaults/95-default-settings
 
 # Modify app list
-sed -i 's/"vpn"/"services"/g; s/"VPN"/"Services"/g' package/feeds/luci/luci-app-ipsec-server/luasrc/controller/ipsec-server.lua    # `grep "IPSec VPN Server" -rl ./`
-sed -i 's/"vpn"/"services"/g; s/"VPN"/"Services"/g' package/feeds/luci/luci-app-ipsec-vpnd/luasrc/controller/ipsec-server.lua    # `grep "IPSec VPN Server" -rl ./`
-sed -i 's/"vpn"/"services"/g; s/"VPN"/"Services"/g' package/feeds/ing/luci-app-zerotier/luasrc/controller/zerotier.lua    # `grep "ZeroTier" -rl ./`
+#sed -i 's/"vpn"/"services"/g; s/"VPN"/"Services"/g' package/feeds/luci/luci-app-ipsec-server/luasrc/controller/ipsec-server.lua    # `grep "IPSec VPN Server" -rl ./`
+#sed -i 's/"vpn"/"services"/g; s/"VPN"/"Services"/g' package/feeds/luci/luci-app-ipsec-vpnd/luasrc/controller/ipsec-server.lua    # `grep "IPSec VPN Server" -rl ./`
+#sed -i 's/"vpn"/"services"/g; s/"VPN"/"Services"/g' package/feeds/ing/luci-app-zerotier/luasrc/controller/zerotier.lua    # `grep "ZeroTier" -rl ./`
 
 
 # Modify app name
-sed -i 's/"IPSec VPN 服务器"/"IPSec VPN"/g' package/feeds/luci/luci-app-ipsec-server/po/zh-cn/ipsec-server.po    # `grep "IPSec VPN 服务器" -rl ./`
-sed -i 's/"IPSec VPN 服务器"/"IPSec VPN"/g' package/feeds/luci/luci-app-ipsec-vpnd/po/zh-cn/ipsec.po    # `grep "IPSec VPN 服务器" -rl ./`
-sed -i 's/"挂载 SMB 网络共享"/"挂载 SMB"/g' package/feeds/luci/luci-app-cifs-mount/po/zh-cn/cifs.po    # `grep "挂载 SMB 网络共享" -rl ./`
-sed -i 's/"Turbo ACC 网络加速"/"Turbo ACC"/g' package/feeds/luci/luci-app-turboacc/po/zh-cn/turboacc.po    # `grep "Turbo ACC 网络加速" -rl ./`
-sed -i 's/"实时流量监测"/"监测"/g' package/feeds/luci/luci-app-wrtbwmon/po/zh-cn/wrtbwmon.po    # `grep "实时流量监测" -rl ./`
-sed -i 's/"Argon 主题设置"/"主题设置"/g' package/feeds/ing/luci-app-argon-config/po/zh-cn/argon-config.po    # `grep "Argon 主题设置" -rl ./`
+#sed -i 's/"IPSec VPN 服务器"/"IPSec VPN"/g' package/feeds/luci/luci-app-ipsec-server/po/zh-cn/ipsec-server.po    # `grep "IPSec VPN 服务器" -rl ./`
+#sed -i 's/"IPSec VPN 服务器"/"IPSec VPN"/g' package/feeds/luci/luci-app-ipsec-vpnd/po/zh-cn/ipsec.po    # `grep "IPSec VPN 服务器" -rl ./`
+#sed -i 's/"挂载 SMB 网络共享"/"挂载 SMB"/g' package/feeds/luci/luci-app-cifs-mount/po/zh-cn/cifs.po    # `grep "挂载 SMB 网络共享" -rl ./`
+#sed -i 's/"Turbo ACC 网络加速"/"Turbo ACC"/g' package/feeds/luci/luci-app-turboacc/po/zh-cn/turboacc.po    # `grep "Turbo ACC 网络加速" -rl ./`
+#sed -i 's/"实时流量监测"/"监测"/g' package/feeds/luci/luci-app-wrtbwmon/po/zh-cn/wrtbwmon.po    # `grep "实时流量监测" -rl ./`
+#sed -i 's/"Argon 主题设置"/"主题设置"/g' package/feeds/ing/luci-app-argon-config/po/zh-cn/argon-config.po    # `grep "Argon 主题设置" -rl ./`
 
 
 # build po2lmo
-if [ -d "feeds/ing/luci-app-openclash/tools/po2lmo" ]; then
-    pushd feeds/ing/luci-app-openclash/tools/po2lmo
-    make && sudo make install
-    popd
-fi
+#if [ -d "feeds/ing/luci-app-openclash/tools/po2lmo" ]; then
+#    pushd feeds/ing/luci-app-openclash/tools/po2lmo
+#    make && sudo make install
+#    popd
+#fi
 
 # Info
 # luci-app-netdata 1.33.1汉化版 导致 web升级后 报错: /usr/lib/lua/luci/dispatcher.lua:220: /etc/config/luci seems to be corrupt, unable to find section 'main'
