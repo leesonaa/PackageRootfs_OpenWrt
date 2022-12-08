@@ -26,7 +26,7 @@
 
 >感谢@wjz304大佬手把手的指导.
 
-
+>回退版本20221201 稳定
 
 ## 鸣谢
 - [OpenWrt](https://github.com/openwrt/openwrt)
