@@ -11,7 +11,7 @@
 #
 
 
-name: Build OpenWrt
+name: Build OpenWrt-H68K
 
 on:
   schedule:
@@ -23,15 +23,15 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config
-  DIY_SHELL: diy.sh
+  FEEDS_CONF: h68k.feeds.conf.default
+  CONFIG_FILE: h68k.config
+  DIY_SHELL: h68k-diy.sh
   TZ: Asia/Shanghai
 
 
 jobs:
   build:
-    name: Build OpenWrt
+    name: Build OpenWrt-H68K
     runs-on: ubuntu-latest
 
     steps:
