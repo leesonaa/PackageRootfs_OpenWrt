@@ -14,8 +14,7 @@
 <img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat" alt="license"/>
 </a>
 
-[![Build OpenWrt](https://github.com/leesonaa/OpenWrt_Build/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/leesonaa/OpenWrt_Build/actions/workflows/build.yml)
-
+[![Build OpenWrt-H68K](https://github.com/leesonaa/OpenWrt_Build/actions/workflows/h68k.yml/badge.svg)](https://github.com/leesonaa/OpenWrt_Build/actions/workflows/h68k.yml)
 
 
 ## 说明
