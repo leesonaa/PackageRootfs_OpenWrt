@@ -21,8 +21,8 @@ on:
 
 
 env:
-  REPO_URL: https://github.com/DHDAXCW/lede-rockchip.git
-  REPO_BRANCH: stable
+  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   DIY_SHELL: diy.sh
@@ -69,9 +69,9 @@ jobs:
         [ -e 040-del-rss-log.patch ] && cp 040-del-rss-log.patch openwrt/package/lean/r8125/patches/040-del-rss-log.patch
 
         # 注释所有 
-        sed -i 's/^TARGET_DEVICES += .*/#&/' openwrt/target/linux/rockchip/image/armv8.mk
+        #sed -i 's/^TARGET_DEVICES += .*/#&/' openwrt/target/linux/rockchip/image/armv8.mk
         # 打开 hinlink_opc-h68k 
-        sed -i 's/^#TARGET_DEVICES += hinlink_opc-h68k/TARGET_DEVICES += hinlink_opc-h68k/' openwrt/target/linux/rockchip/image/armv8.mk
+        #sed -i 's/^#TARGET_DEVICES += hinlink_opc-h68k/TARGET_DEVICES += hinlink_opc-h68k/' openwrt/target/linux/rockchip/image/armv8.mk
 
     - name: Load custom feeds
       run: |
@@ -95,13 +95,6 @@ jobs:
         chmod +x $DIY_SHELL
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_SHELL
-
-    - name: Make config
-      run: |
-        cd openwrt
-
-        make defconfig
-        cat .config
 
     - name: Check and Push config
       run: |
