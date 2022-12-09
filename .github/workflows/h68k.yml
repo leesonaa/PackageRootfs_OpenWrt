@@ -63,10 +63,10 @@ jobs:
         sudo -E apt -y autoremove --purge
         sudo -E apt clean
 
-    #- name: Clone source code
-      #run: |
-        #df -hT $PWD
-        #git clone $REPO_URL -b $REPO_BRANCH openwrt
+    - name: Clone source code
+      run: |
+        df -hT $PWD
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
         #[ -e 040-del-rss-log.patch ] && cp 040-del-rss-log.patch openwrt/package/lean/r8125/patches/040-del-rss-log.patch
 
         # 注释所有 
