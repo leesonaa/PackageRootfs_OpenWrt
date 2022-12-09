@@ -81,11 +81,11 @@ jobs:
           svn export https://github.com/coolsnowwolf/lede/trunk/package/kernel/mac80211 package/kernel/mac80211
           # 打开 hinlink_opc-h68k 
           sed -i 's/^#TARGET_DEVICES += hinlink_opc-h68k/TARGET_DEVICES += hinlink_opc-h68k/' target/linux/rockchip/image/armv8.mk
-
+          cat ./target/linux/rockchip/image/armv8.mk
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && cp $FEEDS_CONF openwrt/feeds.conf.default
-
+        cd openwrt && cat feeds.conf.default
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
