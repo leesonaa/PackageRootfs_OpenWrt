@@ -74,12 +74,12 @@ jobs:
         # 打开 hinlink_opc-h68k 
         #sed -i 's/^#TARGET_DEVICES += hinlink_opc-h68k/TARGET_DEVICES += hinlink_opc-h68k/' openwrt/target/linux/rockchip/image/armv8.mk
 
-    - name : rm dts
-      run: |
-          cd openwrt/target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/
-          rm -rf rk3568-opc-h68k.dts
-          wget https://raw.githubusercontent.com/leesonaa/TestBuild/main/rk3568-opc-h68k.dts
-          cat rk3568-opc-h68k.dts
+    #- name : rm dts
+     # run: |
+       #   cd openwrt/target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/
+        #  rm -rf rk3568-opc-h68k.dts
+        #  wget https://raw.githubusercontent.com/leesonaa/TestBuild/main/rk3568-opc-h68k.dts
+        #  cat rk3568-opc-h68k.dts
 
 
     - name: Load custom feeds
