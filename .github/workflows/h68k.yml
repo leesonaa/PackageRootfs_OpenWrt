@@ -22,7 +22,7 @@ on:
 
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/DHDAXCW/lede-rockchip
   REPO_BRANCH: master
   FEEDS_CONF: h68k.feeds.conf.default
   CONFIG_FILE: h68k.config
@@ -72,14 +72,14 @@ jobs:
         # 注释所有 
         #sed -i 's/^TARGET_DEVICES += .*/#&/' openwrt/target/linux/rockchip/image/armv8.mk
         # 打开 hinlink_opc-h68k 
-        #sed -i 's/^#TARGET_DEVICES += hinlink_opc-h68k/TARGET_DEVICES += hinlink_opc-h68k/' openwrt/target/linux/rockchip/image/armv8.mk
+        sed -i 's/^#TARGET_DEVICES += hinlink_opc-h68k/TARGET_DEVICES += hinlink_opc-h68k/' openwrt/target/linux/rockchip/image/armv8.mk
 
-    #- name : rm dts
-     # run: |
-       #   cd openwrt/target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/
-        #  rm -rf rk3568-opc-h68k.dts
-        #  wget https://raw.githubusercontent.com/leesonaa/TestBuild/main/rk3568-opc-h68k.dts
-        #  cat rk3568-opc-h68k.dts
+    - name : checkout 6.0
+      run: |
+          cd openwrt
+          sed -i 's/5.4/6.0/g' ./target/linux/rockchip/Makefile
+          rm -rf package/kernel/mac80211 && rm -rf package/kernel/rtl8821cu
+          svn export https://github.com/coolsnowwolf/lede/trunk/package/kernel/mac80211 package/kernel/mac80211
 
 
     - name: Load custom feeds
