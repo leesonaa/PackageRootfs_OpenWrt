@@ -11,7 +11,7 @@
 #
 
 
-name: Build OpenWrt-H68K
+name: test
 
 on:
   schedule:
@@ -32,8 +32,8 @@ env:
 
 jobs:
   build:
-    name: Build OpenWrt-H68K
-    runs-on: ubuntu-latest
+    name: test
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout
