@@ -1,0 +1,161 @@
+#
+# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
+#
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
+# https://github.com/P3TERX/Actions-OpenWrt
+# Description: Build OpenWrt using GitHub Actions
+#
+# Copyright (C) 2022 Ing
+#
+
+
+name: Build OpenWrt-H68K
+
+on:
+  schedule:
+    - cron: '0 16 1,15 * *'
+    #每个月的1号和15号的UTC时间16点即中国时间夜里12点编译一次
+  repository_dispatch:
+  workflow_dispatch:
+
+
+env:
+  REPO_URL: https://github.com/Lienol/openwrt.git
+  REPO_BRANCH: 21.02
+  FEEDS_CONF: test.feeds.conf.default
+  CONFIG_FILE: lienol.default.config
+  DIY_SHELL: h68k-diy.sh
+  TZ: America/New_York
+
+
+jobs:
+  build:
+    name: Build OpenWrt-H68K
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+      
+    - name: Init Env
+      run : |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        sudo timedatectl set-timezone "America/New_York"
+
+    - name: Initialization environment
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        docker rmi `docker images -q`
+        sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
+        sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
+
+        sudo -E apt update
+        sudo apt-get -y install build-essential asciidoc binutils bzip2 curl gawk gettext git libncurses5-dev libz-dev patch python3.5 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf
+        sudo -E apt -y autoremove --purge
+        sudo -E apt clean
+
+    - name: Clone source code
+      run: |
+        df -hT $PWD
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        #[ -e 040-del-rss-log.patch ] && cp 040-del-rss-log.patch openwrt/package/lean/r8125/patches/040-del-rss-log.patch
+
+        # 注释所有 
+        #sed -i 's/^TARGET_DEVICES += .*/#&/' openwrt/target/linux/rockchip/image/armv8.mk
+        
+
+    #- name : checkout 6.0
+      #run: |
+          #cd openwrt
+          #sed -i 's/5.4/6.0/g' ./target/linux/rockchip/Makefile
+          #rm -rf target/linux/rockchip/patches-6.0/021-v6.2-net-phy-add-Motorcomm-YT8531S-phy-id.patch && rm -rf target/linux/rockchip/patches-6.0/108-net-phy-Add-driver-for-Motorcomm-yt8531-gigabit.patch
+          #ls target/linux/rockchip/patches-6.0/
+          #rm -rf package/kernel/mac80211 && rm -rf package/kernel/rtl8821cu
+          #svn export https://github.com/coolsnowwolf/lede/trunk/package/kernel/mac80211 package/kernel/mac80211
+          # 打开 hinlink_opc-h68k 
+          #sed -i 's/^#TARGET_DEVICES += hinlink_opc-h68k/TARGET_DEVICES += hinlink_opc-h68k/' target/linux/rockchip/image/armv8.mk
+          #cat ./target/linux/rockchip/image/armv8.mk
+    - name: Load custom feeds
+      run: |
+        [ -e $FEEDS_CONF ] && cp $FEEDS_CONF openwrt/feeds.conf.default
+        cd openwrt && cat feeds.conf.default
+    - name: Update feeds
+      run: cd openwrt && ./scripts/feeds update -a
+
+    - name: Install feeds
+      run: cd openwrt && ./scripts/feeds install -a
+
+         
+
+    - name: Load custom configuration
+      run: |
+        [ -e $CONFIG_FILE ] && cp $CONFIG_FILE openwrt/.config
+        chmod +x $DIY_SHELL
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_SHELL
+
+    - name: Check and Push config
+      run: |
+        [ -e $CONFIG_FILE ] && cp openwrt/.config $CONFIG_FILE
+        if [ -n "$(git status -s | grep $CONFIG_FILE)" ]; then
+          git add $CONFIG_FILE
+          git commit -m "update $(date +%Y-%m-%d" "%H:%M:%S)"
+          git push -f
+        fi
+
+    - name: Compile the firmware
+      run: |
+        cd openwrt
+
+        echo -e "download package"
+        make download -j8 V=s
+
+        find dl -size -1024c -exec ls -l {} \;
+        find dl -size -1024c -exec rm -f {} \;
+
+        echo -e "$(nproc) thread compile"
+        make -j$(nproc) V=s
+
+        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > device_name
+        [ -s device_name ] && echo "device_name=_$(cat device_name)" >> $GITHUB_ENV
+        echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_ENV
+
+    - name: Check space usage
+      if: (!cancelled())
+      run: df -hT
+
+    - name: Organize files
+      if: (!cancelled())
+      run: |
+        cd openwrt/bin/targets/*/*
+        rm -rf packages *.buildinfo *.manifest *.bin
+        sed -i '/buildinfo/d; /\.bin/d; /\.manifest/d' sha256sums
+        for i in `ls` ; do gzip $i; done
+        echo "firmware_dir=$PWD" >> $GITHUB_ENV
+
+    - name: Upload firmware to release
+      uses: softprops/action-gh-release@v1
+      if: (!cancelled())
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.release_tag }}
+        files: ${{ env.firmware_dir }}/*
+
+    #- name: Delete workflow runs
+    #  uses: Mattraks/delete-workflow-runs@v2
+    #  with:
+    #    retain_days: 1
+    #    keep_minimum_runs: 9
+
+    - name: Remove old Releases
+      uses: dev-drprasad/delete-older-releases@v0.1.0
+      with:
+        keep_latest: 9
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
