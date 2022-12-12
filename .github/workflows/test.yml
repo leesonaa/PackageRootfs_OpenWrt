@@ -26,7 +26,7 @@ env:
   REPO_BRANCH: 21.02
   FEEDS_CONF: test.feeds.conf.default
   CONFIG_FILE: lienol.default.config
-  #DIY_SHELL: h68k-diy.sh
+  DIY_SHELL: h68k-diy.sh
   TZ: America/New_York
 
 
