@@ -133,7 +133,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ env.release_tag }}
+        #tag_name: ${{ env.release_tag }}
         files: ${{ env.firmware_dir }}/*
 
 
