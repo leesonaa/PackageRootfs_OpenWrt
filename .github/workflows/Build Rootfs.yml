@@ -11,7 +11,7 @@
 #
 
 
-name: test
+name: Build Rootfs
 
 on:
   schedule:
@@ -24,15 +24,15 @@ on:
 env:
   REPO_URL: https://github.com/Lienol/openwrt
   REPO_BRANCH: 21.02
-  FEEDS_CONF: test.feeds.conf.default
-  CONFIG_FILE: test.config
-  DIY_SHELL: h68k-diy.sh
+  FEEDS_CONF: feeds.conf.default
+  CONFIG_FILE: diy.config
+  DIY_SHELL: diy.sh
   TZ: America/New_York
 
 
 jobs:
   build:
-    name: test
+    name: Build Rootfs
     runs-on: ubuntu-latest
 
     steps:
@@ -67,23 +67,8 @@ jobs:
       run: |
         df -hT $PWD
         git clone -b $REPO_BRANCH --single-branch $REPO_URL openwrt
-        #[ -e 040-del-rss-log.patch ] && cp 040-del-rss-log.patch openwrt/package/lean/r8125/patches/040-del-rss-log.patch
 
-        # 注释所有 
-        #sed -i 's/^TARGET_DEVICES += .*/#&/' openwrt/target/linux/rockchip/image/armv8.mk
         
-
-    #- name : checkout 6.0
-      #run: |
-          #cd openwrt
-          #sed -i 's/5.4/6.0/g' ./target/linux/rockchip/Makefile
-          #rm -rf target/linux/rockchip/patches-6.0/021-v6.2-net-phy-add-Motorcomm-YT8531S-phy-id.patch && rm -rf target/linux/rockchip/patches-6.0/108-net-phy-Add-driver-for-Motorcomm-yt8531-gigabit.patch
-          #ls target/linux/rockchip/patches-6.0/
-          #rm -rf package/kernel/mac80211 && rm -rf package/kernel/rtl8821cu
-          #svn export https://github.com/coolsnowwolf/lede/trunk/package/kernel/mac80211 package/kernel/mac80211
-          # 打开 hinlink_opc-h68k 
-          #sed -i 's/^#TARGET_DEVICES += hinlink_opc-h68k/TARGET_DEVICES += hinlink_opc-h68k/' target/linux/rockchip/image/armv8.mk
-          #cat ./target/linux/rockchip/image/armv8.mk
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && cp $FEEDS_CONF openwrt/feeds.conf.default
@@ -151,11 +136,7 @@ jobs:
         tag_name: ${{ env.release_tag }}
         files: ${{ env.firmware_dir }}/*
 
-    #- name: Delete workflow runs
-    #  uses: Mattraks/delete-workflow-runs@v2
-    #  with:
-    #    retain_days: 1
-    #    keep_minimum_runs: 9
+
 
     - name: Remove old Releases
       uses: dev-drprasad/delete-older-releases@v0.1.0
