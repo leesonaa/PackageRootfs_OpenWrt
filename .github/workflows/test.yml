@@ -66,7 +66,7 @@ jobs:
     - name: Clone source code
       run: |
         df -hT $PWD
-        git clone -b $REPO_BRANCH --single-branch $REPO_URL  openwrt
+        git clone -b $REPO_BRANCH --single-branch $REPO_URL openwrt
         #[ -e 040-del-rss-log.patch ] && cp 040-del-rss-log.patch openwrt/package/lean/r8125/patches/040-del-rss-log.patch
 
         # 注释所有 
