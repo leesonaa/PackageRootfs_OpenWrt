@@ -22,10 +22,10 @@ on:
 
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: 20221001
+  REPO_URL: https://github.com/Lienol/openwrt openwrt
+  REPO_BRANCH: 21.02
   FEEDS_CONF: test.feeds.conf.default
-  CONFIG_FILE: lean.default.config
+  CONFIG_FILE: test.config
   DIY_SHELL: h68k-diy.sh
   TZ: America/New_York
 
