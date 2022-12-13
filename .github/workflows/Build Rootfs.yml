@@ -27,7 +27,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: diy.config
   DIY_SHELL: diy.sh
-  TZ: America/New_York
+  TZ: Asia/Shanghai
 
 
 jobs:
