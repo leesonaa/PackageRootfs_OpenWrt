@@ -11,7 +11,7 @@
 #
 
 
-name: Build Rootfs
+name: Build lean Rootfs
 
 on:
   schedule:
@@ -22,17 +22,17 @@ on:
 
 
 env:
-  REPO_URL: https://github.com/Lienol/openwrt
-  REPO_BRANCH: 21.02
-  FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: diy.config
+  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: master
+  FEEDS_CONF: lean.feeds.conf
+  CONFIG_FILE: lean.config
   DIY_SHELL: diy.sh
   TZ: Asia/Shanghai
 
 
 jobs:
   build:
-    name: Build Rootfs
+    name: Build lean Rootfs
     runs-on: ubuntu-latest
 
     steps:
@@ -43,7 +43,7 @@ jobs:
       run : |
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
-        sudo timedatectl set-timezone "America/New_York"
+        sudo timedatectl set-timezone "Asia/Shanghai"
 
     - name: Initialization environment
       env:
