@@ -26,7 +26,7 @@ env:
   REPO_BRANCH: 21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: diy.config
-  DIY_SHELL: diy.sh
+  DIY_SHELL: default.sh
   TZ: Asia/Shanghai
 
 
