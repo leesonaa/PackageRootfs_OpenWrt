@@ -58,9 +58,9 @@ sed -i 's/192.168.1.1/192.168.100.1/g' package/base-files/files/bin/config_gener
 
 # Modify default theme
 
-sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' feeds/luci/collections/luci/Makefile
-sed -i 's/bootstrap/argonne/g' feeds/luci/modules/luci-base/root/etc/config/luci
-
+#sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' feeds/luci/collections/luci/Makefile
+#sed -i 's/bootstrap/argonne/g' feeds/luci/modules/luci-base/root/etc/config/luci
+#21.02 似乎不支持
 
 
 # Modify maximum connections
